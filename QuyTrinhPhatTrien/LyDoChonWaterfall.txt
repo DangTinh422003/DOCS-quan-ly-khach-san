@@ -1,0 +1,24 @@
+1. Nhược điểm của việc sử dụng mô hình thác nước
+- Không thể chấp nhận thay đổi yêu cầu nhiều
+- Nó trở nên rất khó khăn để di chuyển trở lại giai đoạn. Ví dụ, nếu ứng dụng đã chuyển sang giai đoạn thử nghiệm và có thay đổi về yêu cầu, gặp khó khăn để quay lại và thay đổi nó.
+- Việc giao hàng của sản phẩm cuối cùng là muộn vì không có mẫu thử nghiệm được chứng minh trung gian.
+- Đối với các dự án lớn và phức tạp, mô hình này không tốt vì yếu tố rủi ro cao hơn.
+- Không thích hợp cho các dự án mà yêu cầu được thay đổi thường xuyên.
+- Không làm việc cho các dự án dài và đang diễn ra.
+- Kể từ khi thử nghiệm được thực hiện ở giai đoạn sau, nó không cho phép xác định những thách thức và rủi ro trong giai đoạn trước đó nên chiến lược giảm thiểu rủi ro rất khó để chuẩn bị.
+2. Ưu điểm 
+- Đơn giản, dễ hiểu và sử dụng.
+- Đối với các dự án nhỏ hơn, mô hình thác nước hoạt động tốt và mang lại kết quả phù hợp.
+- Vì các giai đoạn của mô hình thác nước cứng nhắc và chính xác, một pha được thực hiện một lần, nó rất dễ dàng để maintain.
+- Các tiêu chí đầu vào và đầu ra được xác định rõ ràng, do đó nó dễ dàng và có hệ thống để tiến hành chất lượng.
+- Kết quả được ghi chép tốt.
+
+===================================================================================
+			
+
+		LÝ DO NHÓM CHỌN MÔ HÌNH "WATERFALL"
+
+1. Dễ sử dụng, triển khai và dễ quản lý
+2. Phần mềm chỉ quản lý trên 1 khách sạn duy nhất
+3. Yêu cầu về chức năng và thiết kế phần mềm và khách hàng không thay đổi nhiều (đã kí cam kết ràng buộc với khách hàng)
+4. Các yêu cầu của khách hàng đã rõ ràng

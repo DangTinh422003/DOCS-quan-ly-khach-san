@@ -1,0 +1,271 @@
+===========================MANAGER ===========================================
+//LAY THONG TIN QUAN LY
+CREATE PROCEDURE proc_getManager @id NVARCHAR(20)
+
+		AS
+		BEGIN
+			SELECT  FROM MANAGER WHERE MANAGER.id = @id
+		END
+
+
+THEM NHAN VIEN
+
+CREATE PROCEDURE proc_addStaff 
+		@id NVARCHAR(20), @fullname NVARCHAR(20),
+		@phone NVARCHAR(15), @email NVARCHAR(20),
+		@address NVARCHAR(30), @username NVARCHAR(20), @password NVARCHAR(20),
+		@role NVARCHAR(20), @dateCheckin DATE, 
+		@dataCheckout DATE, @dateOfBirth DATE
+		
+		AS
+		BEGIN
+			INSERT INTO Staff (ID, Fullname, Phone, Email, Address, Username, Password, Role, DateCheckin, DateCheckout, DateOfBirth)
+			VALUES (@id, @fullname, @phone, @email, @address, @username, @password, @role, @dateCheckin, @dateCheckout, @dateOfBirth)
+		END	
+		
+//Cap nhat NHAN VIEN
+
+CREATE PROCEDURE proc_updateStaff 
+		@id NVARCHAR(20), @fullname NVARCHAR(20),
+		@phone NVARCHAR(15), @email NVARCHAR(20),
+		@address NVARCHAR(30), @username NVARCHAR(20), @password NVARCHAR(20),
+		@role NVARCHAR(20), @dateCheckin DATE, 
+		@dataCheckout DATE, @dateOfBirth DATE
+		
+		AS
+		BEGIN
+			UPDATE Staff SET Staff.Fullname = @fullname, Staff.Phone = @phone, Staff.Email = @email,
+							Staff.Address = @address, Staff.Username = @username, Staff.Password = @password,
+							Staff.Role = @role, Staff.DateCheckin = @dateCheckin, Staff.DateCheckout = @dateCheckout, 
+							Staff.DateOfBirth = @dateOfBirth
+			WHERE ID = @id
+		END	
+		
+//xoa nhan vien
+
+CREATE PROCEDURE proc_deleteStaff 
+		@id NVARCHAR(20)
+		
+		AS
+		BEGIN
+			DELETE FROM Staff 
+			WHERE ID = @id
+		END	
+
+===========================ACCOUNT ===========================================
+// Doi mat khau
+CREATE PROCEDURE proc_changePassword 
+	@id nvarcha(20),@newPassword nvarchar(20)
+
+AS
+	BEGIN
+		
+		DECLARE cuurentPassword nvarchar (20);
+		
+		IF cuurentPassword == @newPassword THEN
+			RETURN -1
+		ELSE 
+			BEGIN
+				UPDATE ACCOUNT SET ACCOUNT.hashPassword = @newPassword 
+				WHERE ACCOUNT.id = @id
+			END
+
+	END
+
+
+//so sanh mat khau
+CREATE PROCEDURE pro_ComparePassword
+	@username nvarchar(30), @password nvarchar(20)
+AS
+	BEGIN
+		DECLARE cuurentUsername nvarchar(30);
+		DECLARE cuurentPassword nvarvhar(20);
+		DECLARE lenghSearchAccount int;
+
+		SELECT LEN(*) INTO lenghSearchAccount 
+			FROM ACCOUNT
+			WHERE username = @username
+						
+		IF lenghSearchAccount <= 0 THEN 
+			RETURN -1;
+			
+		
+		SELECT password INTO cuurentPassword , username INTO cuurentUsername
+			FROM ACCOUNT
+			WHERE username = @username
+
+		IF cuurentPassword != @password OR cuurentUsername != @username THEN
+			RETURN -1
+		RETURN 1
+	END
+
+==================================USER===================================================
+
+//Tim phong
+
+CREATE PROCEDURE pro_searchRoomById
+	@id nvarchar(20)
+AS
+	BEGIN
+		DECLARE searchID nvarchar(20);
+		DECLARE lenghSearchRoom int;
+
+		SELECT LEN(*) INTO lenghSearchRoom 
+			FROM ROOM
+			WHERE id = @id
+	
+	IF lenghSearchRoom  <= 0 THEN
+		RETURN -1;
+
+	SELECT * FROM ROOM WHERE ROOM.id = @id
+
+
+
+==================================ROOm===================================================
+
+// cap nhta phong
+CREATE PROCEDURE pro_updateRoom
+	@id nvarchar(20), @name nvarchar(20), @type nvarchar(10),
+	@price double, @desc nvarchar(20), @personInRoom int, 
+	@accessChildren boolean, @stateBooking boolean, @rating double
+
+AS
+	BEGIN
+		UPDATE ROOM SET ROOM.name= @name, ROOM.type= type, ROOM.price= @price
+				ROOM.desc = @desc, ROOM.personInRoom= @personInRoom, ROOM.rating= @rating 
+				ROOM.accessChildren= @accessChildren,  ROOM.stateBooking= @stateBooking
+
+				WHERE ACCOUNT.id = @id
+	END 
+
+
+// xoa phong
+CREATE PROCEDURE proc_deleteRoom
+	@id varchar(20)
+AS
+	BEGIN
+		DELETE FROM room WHERE ROOM.id = @id
+	END
+
+// lay thong tin phong
+CREATE PROCEDURE proc_getRoomInfo
+	@id varchar(20)
+AS
+	BEGIN
+		SELECT * FROM ROOM WHERE ROOM.id = @id
+	END
+
+// lay thong tin khach hang
+CREATE PROCEDURE proc_getCustomerInfo
+	@id varchar(20)
+AS
+	BEGIN
+		SELECT * FROM khachhang WHERE khachhang.MaKH = @id
+	END
+
+// lay thong tin hoa don
+CREATE PROCEDURE proc_getBillInfo
+	@id varchar(20)
+AS
+	BEGIN
+		SELECT * FROM hoadon WHERE hoadon.MaHD = @id
+	END
+
+// them hoa don 
+CREATE PROCEDURE proc_addNewBill
+	@MaHD varchar(20),
+	@MaKH varchar(20),
+	@MaNV varchar(20),
+	@NgayTao data,
+	@TongTien double
+AS
+	BEGIN
+		INSERT INTO hoadon values(@MaHD,@MaKH,@MaNV,@NgayTao,@TongTien)
+	END
+
+// xoa hoa don 
+CREATE PROCEDURE proc_deleteBill
+	@id varchar(20)
+AS
+	BEGIN
+		DELETE FROM hoadon WHERE hoadon.MaHD = @id
+	END
+
+// cap nhat hoa don 
+CREATE PROCEDURE proc_updateBill
+	@MaHD varchar(20),
+	@MaKH varchar(20),
+	@MaNV varchar(20),
+	@NgayTao data,
+	@TongTien double
+AS
+	BEGIN
+		UPDATE hoadon set MaHD = @MaHD, MaKH = @MaKH, MaNV = @MaNV, NgayTao = @NgayTao,TongTien = @TongTien)
+	END
+
+
+
+
+
+============CUSTOMER====================
+
+--add customer----------
+
+create PROCEDURE proc_addNewCustomer @hoten varchar(100), @ngaysinh date, @sdt varchar(12), @email varchar(100), @diachi text, @username varchar(50)
+AS
+BEGIN
+	
+    DECLARE @isUsername varchar (50);
+    select @isUsername = username from account WHERE account.username = @username;
+    
+    if @isUsername = null
+    BEGIN
+    	return -1
+    END
+    
+    DECLARE @largestID varchar (50);
+    SELECT @largestID = MaKH from khachhang order by khachhang.MaKH DESC LIMIT 1
+    
+    DECLARE @newID varchar (50);
+    set @newID = CAST((CAST(@largestId as int) + 1) as varchar(50))
+    
+    INSERT INTO khachhang VALUES (@newId, @hoten, @ngaysinh, @sdt, @email, @diachi, @username)
+                                
+END
+
+--update------------
+
+
+create PROCEDURE proc_ChangeCustomer @MaKH varchar(50), @hoten varchar(100), @ngaysinh date, @sdt varchar(12), @email varchar(100), @diachi text
+AS
+BEGIN
+	
+    DECLARE @isUsername varchar (50);
+    select @isUsername = username from account WHERE account.MaKH = @MaKH;
+    
+    if @isUsername = null
+    BEGIN
+    	return -1
+    END
+    
+    UPDATE `khachhang` set `HoTen` = @hoten, `NgaySinh`=@ngaysinh,`Sdt`=@sdt,`Email`=@email,`DiaChi`=@diachi WHERE MaKH = @MaKH
+                                
+END
+
+--delete---------------
+
+create PROCEDURE proc_DeleteCustomer @MaKH varchar(50)
+AS
+BEGIN
+	
+    DECLARE @makh varchar (50);
+    select @makh = MaKH from account WHERE account.MaKH = @MaKH;
+    
+    if @makh = null
+    BEGIN
+    	return -1
+    END
+    
+    DELETE from `khachhang` where MaKH = @MaKH
+                                
+END
