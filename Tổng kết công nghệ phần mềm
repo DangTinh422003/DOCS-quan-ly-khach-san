@@ -1,0 +1,71 @@
+1. Giới thiệu đồ án (ngữ cảnh)
+	Viết mô tả ngữ cảnh -> Oanh [ƯU TIÊN]
+
+2. Yêu cầu đồ án
+	Tài liệu SRS
+	Bảng câu hỏi yêu cầu -> Oanh [ƯU TIÊN]
+	Tài liệu thống nhất yêu cầu với KH ->  Oanh (phải có chữ kí) [ƯU TIÊN]
+
+3. Kế hoạch đồ án
+	Project Plan -> Tình [ƯU TIÊN]
+	Mô tả cập nhật project Plan -> Tình [ƯU TIÊN]
+	File tổng kết, cuốn báo cáo tổng kết -> Tình
+
+4. Sơ đồ tổng quan
+	Use case + Đặc tả use case
+	Class diagram
+
+5. Thiết kế dữ liệu 
+	ERD + Mô hình quan hệ
+
+	Stored Procedure -> Hải [ƯU TIÊN]
+	Function -> Hải [ƯU TIÊN]
+	Trigger -> Hải [ƯU TIÊN]
+	Các câu lệnh tạo CSDL -> Hải [ƯU TIÊN]
+	Các câu lệnh truy vấn -> Hải [ƯU TIÊN]
+
+6. Thiết kế xử lý: 
+-Các sơ đồ gồm :
+	Activity -> A Huy, Tình, Oanh [ƯU TIÊN]
+	Sequence -> A Huy, Tình, Oanh [ƯU TIÊN]
+	State
+	Class
+	Object 
+	Package  *chưa làm
+	Component *không cần
+	Deployment *không cần
+	Tài liệu coding *không cần
+
+7. Thiết kế giao diện
+	Tài liệu thiết kế -> Long 
+
+8. Tài liệu kiểm thử
+	Tài liệu Testing -> Oanh 
+ 
+9. Tài liệu HDSD phần mềm
+
+10. Tài liệu thiết kế Logo nhóm -> Long [ƯU TIÊN]
+11. Các loại biên bản 
+	Biên bản cập nhật Project Plan [ƯU TIÊN]
+	Biên bản phân công Nhóm [ƯU TIÊN]
+	Biên bản họp Nhóm [ƯU TIÊN]
+	Biên bản nghiệm thu sản phẩm *(cuối kì)
+	Biên bản bàn giao sản phẩm *(cuối kì)
+
+
+7. tài liệu thiết kế -> Long
+8. tài liệu testing -> Oanh
+9. tài liệu cơ sở dữ liệu -> Hải [ƯU TIÊN]
+10.tài liệu hướng dẫn sử dụng -> [ƯU TIÊN]
+
+
+-> TỐI CHỦ NHẬT TUẦN NÀY PHẢI HOÀN THÀNH LOGO NHÓM -> Long
+(mã màu, mô tả logo, các phiên bản logo ví dụ như trên web hay trên áo, nền đen, nền trắng)
+
+-> 31/10 phải đạt 50%
+-> 14/11 phải đạt 80% đến 90%
+-> 21/11 phải đặt 90% đến 95%
+-> lý thuyết cuối cùng 28/11 -> báo cáo ngày 15/12
+
+
+
